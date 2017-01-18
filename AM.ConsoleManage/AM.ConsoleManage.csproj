@@ -75,7 +75,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="test.html" />
+    <Content Include="demo\control.html" />
+    <Content Include="demo\js\websocket.js" />
+    <Content Include="demo\display.html" />
     <None Include="App.config" />
     <Content Include="Config\log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

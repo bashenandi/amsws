@@ -18,7 +18,7 @@ namespace AM.SuperWebSocket.Command
             }
             else
             {
-                session.TrySend(JsonConvert.SerializeObject(new { type = "error", message = "请输入身份验证信息" }));
+                session.TrySend(JsonConvert.SerializeObject(new { type = "error", message = "请输入要发送的消息体" }));
             }
         }
     }

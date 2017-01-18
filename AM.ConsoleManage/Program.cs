@@ -34,7 +34,7 @@ namespace AM.ConsoleManage
 
             /**
             var appServer = new AMAppServer();
-            if (!appServer.Setup(9090))
+            if (!appServer.Setup(8080))
             {
                 Console.WriteLine("Failed to setup!");
                 Console.ReadKey();
@@ -46,8 +46,7 @@ namespace AM.ConsoleManage
                 Console.WriteLine("Failed to start!");
                 Console.ReadKey();
                 return;
-            }
-            **/
+            }**/
 
             Console.WriteLine("Press key 'q' to stop it!");
             while (Console.ReadKey().KeyChar != 'q')

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>显示端</title>
+</head>
+<body>
+    <input type="text" id="txt" /><button>发送</button>
+    <div id="result"></div>
+
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery-cookie/1.3.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="js/websocket.js"></script>
+    <script type="text/javascript">
+        terminal = "display";
+        ws.onopen = function (event) {
+            var code = decodeURIComponent($.cookie('am_identity'));
+            ws.send('verify {"terminal": "' + terminal + '", "identity": ' + decodeURIComponent(code) + '}');
+        }
+
+        ws.onmessage = function (event) {
+            var json = JSON.parse(event.data);
+            alert(json);
+            switch (json.type) {
+                case "welcome": console.log("你的sessionid是：" + json.message); break;
+                case "log": console.log(json.message); break;
+                case "error": alert(json.message); break;
+                case "verifyed":
+                    {
+                        console.log("标识成功为：" + json.message + "，记录cookies");
+                        $.cookie('am_identity', encodeURIComponent(json.message));
+                        break;
+                    }
+                default: $("#result").append(event.data + "<br />");
+            }
+        }
+    </script>
+</body>
+</html>
